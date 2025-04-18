@@ -1,7 +1,5 @@
 # AWS-Snowflake-Pipeline-Code
 
-# AWS-Snowflake Pipeline
-
 This project demonstrates how to build a data pipeline from AWS S3 to Snowflake. It includes creating the necessary storage integration, uploading data to S3, and loading it into Snowflake tables using external stages.
 
 ---
