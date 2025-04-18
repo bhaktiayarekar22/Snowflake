@@ -140,5 +140,3 @@ SELECT * FROM T1;
 Notebook Documentation Date: **17-Apr-2025**
 
 ---
-
-Let me know if you'd like a Markdown file download or need this in a different format (PDF, HTML, etc.).
