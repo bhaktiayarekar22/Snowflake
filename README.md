@@ -61,7 +61,7 @@ CREATE STORAGE INTEGRATION AWS_INTG
 1. Go to AWS → IAM → Roles.
 2. Create a new role with **AmazonS3FullAccess**.
 3. Copy the **Role ARN** and paste it into the Snowflake integration statement.
-4. Paste the **External ID** from Snowflake into the AWS Trust Relationships.
+4. Paste the **External ID** from Snowflake into the AWS in Trust Relationships,but put temporary external id '0000'.
 
 After running this in Snowflake:
 ✅ **Integration is created successfully.**
@@ -81,10 +81,9 @@ After running this in Snowflake:
 
 ### Create a table:
 ```sql
-CREATE TABLE T1 (
-  ID INT,
-  NAME VARCHAR
-);
+
+CREATE TABLE T1
+(INDEX INT, CUSTOMER_ID VARCHAR, FIRST_NAME VARCHAR, LAST_NAME VARCHAR, COMPANY VARCHAR, CITY VARCHAR, COUNTRY VARCHAR, PHONE_1 VARCHAR, PHONE_2 VARCHAR, EMAIL VARCHAR, SUBSCRIPTION_DATE VARCHAR, WEBSITE VARCHAR);
 ```
 
 ### Create a file format:
@@ -100,7 +99,8 @@ CREATE FILE FORMAT ISV
 ```sql
 COPY INTO T1
 FROM @AWS_STG
-FILE_FORMAT = ISV;
+FILE_FORMAT = CSV
+ON_ERROR = 'CONTINUE';
 ```
 
 ✅ Data successfully loaded into Snowflake from S3.
@@ -116,7 +116,7 @@ LIST @AWS_STG;
 
 To select data:
 ```sql
-SELECT $1, $2, $3
+SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14
 FROM @AWS_STG;
 ```
 
